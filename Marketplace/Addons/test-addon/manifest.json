@@ -1,0 +1,40 @@
+{
+  "type": "addon",
+  "id": "test-addon",
+  "name": "Test Addon",
+  "version": "1.0.0",
+  "description": "Developer test addon — exercises every AddonContext API feature: two searchable catalogs (movies + series), stream resolver with HTTP + HLS streams and S01E01 episode support, metadata provider with fetchSeasons / fetchEpisodes / prefetchDetails, ctx.store set/get/delete with boot counter, ctx.getAddonConfig to read another addon's config, ctx.getAddonStore for read-only cross-addon SQLite access, all three variable types (string secret / number / boolean), and teardown cleanup.",
+  "author": "HephaestWatch",
+  "provides": ["catalog", "streams"],
+  "catalogs": [
+    { "id": "test-addon:movies", "name": "Test Movies", "type": "movie", "searchable": true },
+    { "id": "test-addon:series", "name": "Test Series", "type": "series", "searchable": true }
+  ],
+  "variables": [
+    {
+      "key": "apiKey",
+      "label": "API Key",
+      "type": "string",
+      "default": "demo-key",
+      "secret": true,
+      "description": "Dummy API key — tests secret field rendering in the config drawer"
+    },
+    {
+      "key": "maxResults",
+      "label": "Max Results",
+      "type": "number",
+      "default": 10,
+      "description": "How many items to return per catalog page"
+    },
+    {
+      "key": "showDebug",
+      "label": "Show debug logs",
+      "type": "boolean",
+      "default": false,
+      "description": "Print verbose logs to the browser console"
+    }
+  ],
+  "scripts": {
+    "addon": "./index.js"
+  }
+}

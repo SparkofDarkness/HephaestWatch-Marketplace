@@ -1,6 +1,36 @@
 {
   "schemaVersion": "1",
-  "updatedAt": "2026-06-15",
-  "addons": [],
-  "plugins": []
+  "updatedAt": "2026-06-16",
+  "addons": [
+    {
+      "id": "test-addon",
+      "name": "Test Addon",
+      "description": "Developer test addon — exercises every AddonContext API feature: two searchable catalogs (movies + series), stream resolver with HTTP + HLS streams and S01E01 episode support, metadata provider with fetchSeasons / fetchEpisodes / prefetchDetails, ctx.store set/get/delete with boot counter, ctx.getAddonConfig to read another addon's config, ctx.getAddonStore for read-only cross-addon SQLite access, all three variable types (string secret / number / boolean), and teardown cleanup.",
+      "author": "SparkofDarkness",
+      "authorUrl": "https://github.com/SparkofDarkness",
+      "repo": "SparkofDarkness/HephaestWatch-Marketplace",
+      "tags": ["tools"],
+      "verified": true,
+      "featured": false,
+      "latestVersion": "1.0.0",
+      "manifestUrl": "https://cdn.jsdelivr.net/gh/SparkofDarkness/HephaestWatch-Marketplace@main/Marketplace/Addons/test-addon/manifest.json",
+      "minAppVersion": "0.1.0"
+    }
+  ],
+  "plugins": [
+    {
+      "id": "test-plugin",
+      "name": "Test Plugin",
+      "description": "Developer test plugin — exercises every PluginContext API feature: toolbar UI slot (button opens a modal panel with live store snapshot), statusbar UI slot (live hook-fire counter), three Command Palette commands (say hello / log config / reset store), ctx.store set/get/delete/clear with session counter, all four hook events (stream:beforeConnect transforms stream, stream:afterConnect observes final URL, player:progressSaved writes last position to store, player:markedWatched counts per-item view history), config variables (string color / boolean toggle), React via window.__HW_React (no bundled React copy), and teardown that unsubscribes all four hooks.",
+      "author": "SparkofDarkness",
+      "authorUrl": "https://github.com/SparkofDarkness",
+      "repo": "SparkofDarkness/HephaestWatch-Marketplace",
+      "tags": ["tools", "ui"],
+      "verified": true,
+      "featured": false,
+      "latestVersion": "1.0.0",
+      "manifestUrl": "https://cdn.jsdelivr.net/gh/SparkofDarkness/HephaestWatch-Marketplace@main/Marketplace/Plugins/test-plugin/manifest.json",
+      "minAppVersion": "0.1.0"
+    }
+  ]
 }

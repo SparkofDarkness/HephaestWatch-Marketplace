@@ -1,0 +1,26 @@
+{
+  "type": "plugin",
+  "id": "test-plugin",
+  "name": "Test Plugin",
+  "version": "1.0.0",
+  "description": "Developer test plugin — exercises every PluginContext API feature: toolbar UI slot (button opens a modal panel with live store snapshot), statusbar UI slot (live hook-fire counter), three Command Palette commands (say hello / log config / reset store), ctx.store set/get/delete/clear with session counter, all four hook events (stream:beforeConnect transforms stream, stream:afterConnect observes final URL, player:progressSaved writes last position to store, player:markedWatched counts per-item view history), config variables (string color / boolean toggle), React via window.__HW_React (no bundled React copy), and teardown that unsubscribes all four hooks.",
+  "author": "HephaestWatch",
+  "variables": [
+    {
+      "key": "badgeColor",
+      "label": "Badge Color",
+      "type": "string",
+      "default": "#60a5fa",
+      "description": "CSS color value for the statusbar hook counter badge"
+    },
+    {
+      "key": "logHooks",
+      "label": "Log hook events to console",
+      "type": "boolean",
+      "default": true
+    }
+  ],
+  "scripts": {
+    "plugin": "./plugin.js"
+  }
+}
