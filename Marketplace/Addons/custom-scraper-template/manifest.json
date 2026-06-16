@@ -1,0 +1,23 @@
+{
+  "type": "addon",
+  "id": "custom-scraper-template",
+  "name": "My Custom Source",
+  "version": "1.0.0",
+  "description": "Template — copy this folder and implement your own stream or catalog source.",
+  "author": "Your Name",
+  "provides": ["streams"],
+  "catalogs": [],
+  "variables": [
+    {
+      "key": "apiKey",
+      "label": "API Key",
+      "type": "string",
+      "default": "",
+      "description": "API key for your source.",
+      "secret": true
+    }
+  ],
+  "scripts": {
+    "addon": "index.js"
+  }
+}

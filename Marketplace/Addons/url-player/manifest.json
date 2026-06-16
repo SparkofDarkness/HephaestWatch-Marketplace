@@ -1,0 +1,26 @@
+{
+  "type": "addon",
+  "id": "url-player",
+  "name": "URL Player (Dev)",
+  "version": "1.0.0",
+  "description": "Dev-only addon — paste any video URL (http/hls) into the config and it appears as a playable catalog entry. Use this to test the StreamAdapter without a real torrent.",
+  "author": "HephaestWatch Dev",
+  "provides": ["catalog", "streams"],
+  "catalogs": [
+    { "id": "url-player:videos", "name": "Direct URL Videos", "type": "movie" }
+  ],
+  "variables": [
+    { "key": "url1",   "label": "Video URL 1",           "type": "string", "default": "",             "description": "Direct video URL — http/https .mp4 or .m3u8 (HLS)" },
+    { "key": "title1", "label": "Title 1",               "type": "string", "default": "Test Video 1", "description": "Display name for the first URL" },
+    { "key": "type1",  "label": "Stream type 1",         "type": "string", "default": "http",         "description": "\"http\" for direct files, \"hls\" for .m3u8 playlists" },
+    { "key": "url2",   "label": "Video URL 2 (optional)","type": "string", "default": "",             "description": "Second test URL" },
+    { "key": "title2", "label": "Title 2",               "type": "string", "default": "Test Video 2", "description": "Display name for the second URL" },
+    { "key": "type2",  "label": "Stream type 2",         "type": "string", "default": "http",         "description": "\"http\" or \"hls\"" },
+    { "key": "url3",   "label": "Video URL 3 (optional)","type": "string", "default": "",             "description": "Third test URL" },
+    { "key": "title3", "label": "Title 3",               "type": "string", "default": "Test Video 3", "description": "Display name for the third URL" },
+    { "key": "type3",  "label": "Stream type 3",         "type": "string", "default": "hls",          "description": "\"http\" or \"hls\"" }
+  ],
+  "scripts": {
+    "addon": "index.js"
+  }
+}

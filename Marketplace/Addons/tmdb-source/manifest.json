@@ -1,0 +1,36 @@
+{
+  "type": "addon",
+  "id": "tmdb-source",
+  "name": "TMDB",
+  "version": "1.0.0",
+  "description": "Movies and series from The Movie Database — popular, top-rated, and trending catalogs with full metadata.",
+  "author": "HephaestWatch",
+  "logo": "https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg",
+  "provides": ["catalog"],
+  "catalogs": [
+    { "id": "tmdb:popular-movies",   "name": "Popular Movies",     "type": "movie",  "searchable": true  },
+    { "id": "tmdb:top-rated-movies", "name": "Top Rated Movies",   "type": "movie",  "searchable": false },
+    { "id": "tmdb:trending-movies",  "name": "Trending This Week", "type": "movie",  "searchable": false },
+    { "id": "tmdb:popular-series",   "name": "Popular Series",     "type": "series", "searchable": true  }
+  ],
+  "variables": [
+    {
+      "key": "apiKey",
+      "label": "TMDB API Key",
+      "type": "string",
+      "default": "",
+      "description": "API Key (v3) or Read Access Token (v4) from themoviedb.org/settings/api",
+      "secret": true
+    },
+    {
+      "key": "language",
+      "label": "Language",
+      "type": "string",
+      "default": "en-US",
+      "description": "e.g. en-US, de-DE, fr-FR"
+    }
+  ],
+  "scripts": {
+    "addon": "index.js"
+  }
+}

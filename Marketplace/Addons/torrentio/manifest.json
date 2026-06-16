@@ -1,0 +1,37 @@
+{
+  "type": "addon",
+  "id": "torrentio",
+  "name": "Torrentio",
+  "version": "1.0.0",
+  "description": "Torrent streams from YTS, EZTV, The Pirate Bay, 1337x and more — aggregated and sorted by seeders.",
+  "author": "HephaestWatch",
+  "logo": "https://torrentio.strem.fun/images/logo.png",
+  "provides": ["streams"],
+  "variables": [
+    {
+      "key": "tmdbApiKey",
+      "label": "TMDB API Key (optional)",
+      "type": "string",
+      "default": "",
+      "description": "Optional override — if empty, the key from the TMDB addon is used automatically.",
+      "secret": true
+    },
+    {
+      "key": "providers",
+      "label": "Providers",
+      "type": "string",
+      "default": "yts,eztv,rarbg,1337x,thepiratebay,torrentgalaxy",
+      "description": "Comma-separated list of torrent providers."
+    },
+    {
+      "key": "qualityFilter",
+      "label": "Quality filter",
+      "type": "string",
+      "default": "",
+      "description": "e.g. BluRay,WEB — leave empty for all qualities."
+    }
+  ],
+  "scripts": {
+    "addon": "index.js"
+  }
+}

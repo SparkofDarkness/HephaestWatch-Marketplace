@@ -1,0 +1,34 @@
+{
+  "type": "plugin",
+  "id": "skip-intro",
+  "name": "Skip Intro",
+  "version": "1.0.0",
+  "description": "Shows a 'Skip Intro' button during the opening credits window. Click it to jump past the intro.",
+  "author": "HephaestWatch",
+  "variables": [
+    {
+      "key": "skipSeconds",
+      "label": "Seconds to skip",
+      "type": "number",
+      "default": 85,
+      "description": "How many seconds the Skip Intro button jumps forward."
+    },
+    {
+      "key": "showFromSeconds",
+      "label": "Show button after (seconds)",
+      "type": "number",
+      "default": 15,
+      "description": "Show the button only after this many seconds into playback."
+    },
+    {
+      "key": "showUntilMinutes",
+      "label": "Hide button after (minutes)",
+      "type": "number",
+      "default": 5,
+      "description": "Hide the button after this many minutes into playback."
+    }
+  ],
+  "scripts": {
+    "plugin": "plugin.js"
+  }
+}
