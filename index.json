@@ -1,36 +1,111 @@
 {
   "schemaVersion": "1",
-  "updatedAt": "2026-06-16",
+  "updatedAt": "2026-06-16T00:00:00Z",
   "addons": [
     {
-      "id": "test-addon",
-      "name": "Test Addon",
-      "description": "Developer test addon — exercises every AddonContext API feature: two searchable catalogs (movies + series), stream resolver with HTTP + HLS streams and S01E01 episode support, metadata provider with fetchSeasons / fetchEpisodes / prefetchDetails, ctx.store set/get/delete with boot counter, ctx.getAddonConfig to read another addon's config, ctx.getAddonStore for read-only cross-addon SQLite access, all three variable types (string secret / number / boolean), and teardown cleanup.",
+      "id": "tmdb-source",
+      "name": "TMDB Source",
+      "description": "Browse Popular Movies, Top Rated, Trending and Popular Series from The Movie Database.",
       "author": "SparkofDarkness",
-      "authorUrl": "https://github.com/SparkofDarkness",
-      "repo": "SparkofDarkness/HephaestWatch-Marketplace",
-      "tags": ["tools"],
+      "repo": "https://github.com/SparkofDarkness/HephaestWatch-Marketplace",
+      "tags": ["catalog", "metadata", "movies", "series"],
+      "verified": true,
+      "featured": true,
+      "latestVersion": "1.0.0",
+      "manifestUrl": "RAW_BASE/addons/tmdb-source/manifest.json",
+      "bundleUrl": "RAW_BASE/addons/tmdb-source/index.js"
+    },
+    {
+      "id": "torrentio",
+      "name": "Torrentio",
+      "description": "Resolves torrent streams for movies and series via Torrentio providers.",
+      "author": "SparkofDarkness",
+      "repo": "https://github.com/SparkofDarkness/HephaestWatch-Marketplace",
+      "tags": ["streams", "movies", "series"],
+      "verified": true,
+      "featured": true,
+      "latestVersion": "1.0.0",
+      "manifestUrl": "RAW_BASE/addons/torrentio/manifest.json",
+      "bundleUrl": "RAW_BASE/addons/torrentio/index.js"
+    },
+    {
+      "id": "url-player",
+      "name": "URL Player",
+      "description": "Play any direct video URL or m3u8 stream. Development / testing tool.",
+      "author": "SparkofDarkness",
+      "repo": "https://github.com/SparkofDarkness/HephaestWatch-Marketplace",
+      "tags": ["streams", "tools"],
       "verified": true,
       "featured": false,
       "latestVersion": "1.0.0",
-      "manifestUrl": "https://cdn.jsdelivr.net/gh/SparkofDarkness/HephaestWatch-Marketplace@main/Marketplace/Addons/test-addon/manifest.json",
-      "minAppVersion": "0.1.0"
+      "manifestUrl": "RAW_BASE/addons/url-player/manifest.json"
+    },
+    {
+      "id": "custom-scraper-template",
+      "name": "Custom Scraper Template",
+      "description": "Starter template for building your own scraper addon.",
+      "author": "SparkofDarkness",
+      "repo": "https://github.com/SparkofDarkness/HephaestWatch-Marketplace",
+      "tags": ["streams", "tools"],
+      "verified": true,
+      "featured": false,
+      "latestVersion": "1.0.0",
+      "manifestUrl": "RAW_BASE/addons/custom-scraper-template/manifest.json",
+      "bundleUrl": "RAW_BASE/addons/custom-scraper-template/index.js"
     }
   ],
   "plugins": [
     {
-      "id": "test-plugin",
-      "name": "Test Plugin",
-      "description": "Developer test plugin — exercises every PluginContext API feature: toolbar UI slot (button opens a modal panel with live store snapshot), statusbar UI slot (live hook-fire counter), three Command Palette commands (say hello / log config / reset store), ctx.store set/get/delete/clear with session counter, all four hook events (stream:beforeConnect transforms stream, stream:afterConnect observes final URL, player:progressSaved writes last position to store, player:markedWatched counts per-item view history), config variables (string color / boolean toggle), React via window.__HW_React (no bundled React copy), and teardown that unsubscribes all four hooks.",
+      "id": "skip-intro",
+      "name": "Skip Intro",
+      "description": "Adds a Skip Intro button in the player overlay after a configurable time.",
       "author": "SparkofDarkness",
-      "authorUrl": "https://github.com/SparkofDarkness",
-      "repo": "SparkofDarkness/HephaestWatch-Marketplace",
-      "tags": ["tools", "ui"],
+      "repo": "https://github.com/SparkofDarkness/HephaestWatch-Marketplace",
+      "tags": ["player", "ui"],
+      "verified": true,
+      "featured": true,
+      "latestVersion": "1.0.0",
+      "manifestUrl": "RAW_BASE/plugins/skip-intro/manifest.json",
+      "bundleUrl": "RAW_BASE/plugins/skip-intro/plugin.js"
+    },
+    {
+      "id": "watch-history",
+      "name": "Watch History",
+      "description": "Shows your watch history and lets you resume or remove entries.",
+      "author": "SparkofDarkness",
+      "repo": "https://github.com/SparkofDarkness/HephaestWatch-Marketplace",
+      "tags": ["ui", "tools"],
+      "verified": true,
+      "featured": true,
+      "latestVersion": "1.0.0",
+      "manifestUrl": "RAW_BASE/plugins/watch-history/manifest.json",
+      "bundleUrl": "RAW_BASE/plugins/watch-history/plugin.js"
+    },
+    {
+      "id": "watchlist",
+      "name": "Watchlist",
+      "description": "Bookmark movies and series to watch later.",
+      "author": "SparkofDarkness",
+      "repo": "https://github.com/SparkofDarkness/HephaestWatch-Marketplace",
+      "tags": ["ui", "tools"],
+      "verified": true,
+      "featured": true,
+      "latestVersion": "1.0.0",
+      "manifestUrl": "RAW_BASE/plugins/watchlist/manifest.json",
+      "bundleUrl": "RAW_BASE/plugins/watchlist/plugin.js"
+    },
+    {
+      "id": "example-plugin",
+      "name": "Example Plugin",
+      "description": "Developer reference plugin with sidebar widget and command palette integration.",
+      "author": "SparkofDarkness",
+      "repo": "https://github.com/SparkofDarkness/HephaestWatch-Marketplace",
+      "tags": ["tools"],
       "verified": true,
       "featured": false,
       "latestVersion": "1.0.0",
-      "manifestUrl": "https://cdn.jsdelivr.net/gh/SparkofDarkness/HephaestWatch-Marketplace@main/Marketplace/Plugins/test-plugin/manifest.json",
-      "minAppVersion": "0.1.0"
+      "manifestUrl": "RAW_BASE/plugins/example-plugin/manifest.json",
+      "bundleUrl": "RAW_BASE/plugins/example-plugin/plugin.js"
     }
   ]
 }
