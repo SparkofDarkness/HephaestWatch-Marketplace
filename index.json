@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1",
-  "updatedAt": "2026-06-16T18:02:02.836Z",
+  "updatedAt": "2026-06-17T19:29:42.841Z",
   "addons": [
     {
       "id": "custom-scraper-template",
@@ -92,6 +92,22 @@
     }
   ],
   "plugins": [
+    {
+      "id": "example-plugin",
+      "name": "Example Plugin",
+      "description": "Developer reference plugin with sidebar widget, command palette integration, and home-section demo.",
+      "author": "SparkofDarkness",
+      "authorUrl": "https://github.com/SparkofDarkness",
+      "repo": "https://github.com/SparkofDarkness/HephaestWatch-Marketplace",
+      "tags": [
+        "tools"
+      ],
+      "verified": true,
+      "featured": false,
+      "latestVersion": "1.0.0",
+      "manifestUrl": "https://raw.githubusercontent.com/SparkofDarkness/HephaestWatch-Marketplace/main/plugins/example-plugin/manifest.json",
+      "bundleUrl": "https://raw.githubusercontent.com/SparkofDarkness/HephaestWatch-Marketplace/main/plugins/example-plugin/plugin.js"
+    },
     {
       "id": "skip-intro",
       "name": "Skip Intro",
