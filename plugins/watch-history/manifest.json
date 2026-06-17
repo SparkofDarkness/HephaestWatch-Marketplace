@@ -2,7 +2,7 @@
   "type": "plugin",
   "id": "watch-history",
   "name": "Watch History",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Shows all movies and series you have already watched. Updated automatically when you finish something or mark it as watched.",
   "author": "HephaestWatch",
   "scripts": {

@@ -2,7 +2,7 @@
   "type": "addon",
   "id": "test-addon",
   "name": "Test Addon",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Developer test addon — exercises every AddonContext API feature: two searchable catalogs (movies + series), stream resolver with HTTP + HLS streams and S01E01 episode support, metadata provider with fetchSeasons / fetchEpisodes / prefetchDetails, ctx.store set/get/delete with boot counter, ctx.getAddonConfig to read another addon's config, ctx.getAddonStore for read-only cross-addon SQLite access, all three variable types (string secret / number / boolean), and teardown cleanup.",
   "author": "HephaestWatch",
   "provides": ["catalog", "streams"],

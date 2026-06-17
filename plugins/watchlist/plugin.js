@@ -263,11 +263,22 @@ function WatchlistSection() {
 
   if (entries.length === 0) return null;
 
+  function openDetail(entry) {
+    const nav = window.__HW_navigation;
+    if (!nav?.openDetail) return;
+    nav.openDetail({ id: entry.id, type: entry.contentType, name: entry.title, poster: entry.poster, year: entry.year });
+  }
+
   return h('section', { className: 'catalog-row' },
     h('h2', { className: 'catalog-row__title' }, '📋 My Watchlist'),
     h('div', { className: 'catalog-row__scroller' },
       entries.map(item =>
-        h('div', { key: item.id, className: 'poster-card-wrap' },
+        h('div', {
+          key: item.id,
+          className: 'poster-card-wrap',
+          onClick: () => openDetail(item),
+          style: { cursor: 'pointer' },
+        },
           h('div', { className: 'poster-card' },
             item.poster
               ? h('img', { className: 'poster-card__img', src: item.poster, loading: 'lazy', alt: item.title })

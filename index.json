@@ -32,7 +32,7 @@
       ],
       "verified": false,
       "featured": false,
-      "latestVersion": "1.0.0",
+      "latestVersion": "1.1.0",
       "manifestUrl": "https://raw.githubusercontent.com/SparkofDarkness/HephaestWatch-Marketplace/main/addons/test-addon/manifest.json",
       "bundleUrl": "https://raw.githubusercontent.com/SparkofDarkness/HephaestWatch-Marketplace/main/addons/test-addon/./index.js"
     },
@@ -51,7 +51,7 @@
       ],
       "verified": true,
       "featured": true,
-      "latestVersion": "1.0.0",
+      "latestVersion": "1.1.0",
       "manifestUrl": "https://raw.githubusercontent.com/SparkofDarkness/HephaestWatch-Marketplace/main/addons/tmdb-source/manifest.json",
       "bundleUrl": "https://raw.githubusercontent.com/SparkofDarkness/HephaestWatch-Marketplace/main/addons/tmdb-source/index.js"
     },
@@ -86,7 +86,7 @@
       ],
       "verified": true,
       "featured": false,
-      "latestVersion": "1.0.0",
+      "latestVersion": "1.1.0",
       "manifestUrl": "https://raw.githubusercontent.com/SparkofDarkness/HephaestWatch-Marketplace/main/addons/url-player/manifest.json",
       "bundleUrl": "https://raw.githubusercontent.com/SparkofDarkness/HephaestWatch-Marketplace/main/addons/url-player/index.js"
     }
@@ -154,7 +154,7 @@
       ],
       "verified": true,
       "featured": true,
-      "latestVersion": "1.0.0",
+      "latestVersion": "1.2.0",
       "manifestUrl": "https://raw.githubusercontent.com/SparkofDarkness/HephaestWatch-Marketplace/main/plugins/watch-history/manifest.json",
       "bundleUrl": "https://raw.githubusercontent.com/SparkofDarkness/HephaestWatch-Marketplace/main/plugins/watch-history/plugin.js"
     },
@@ -171,7 +171,7 @@
       ],
       "verified": true,
       "featured": true,
-      "latestVersion": "1.0.0",
+      "latestVersion": "1.2.0",
       "manifestUrl": "https://raw.githubusercontent.com/SparkofDarkness/HephaestWatch-Marketplace/main/plugins/watchlist/manifest.json",
       "bundleUrl": "https://raw.githubusercontent.com/SparkofDarkness/HephaestWatch-Marketplace/main/plugins/watchlist/plugin.js"
     }

@@ -2,7 +2,7 @@
   "type": "plugin",
   "id": "watchlist",
   "name": "Watchlist",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Save movies and series you want to watch. Search, filter, and manage your personal list.",
   "author": "HephaestWatch",
   "scripts": {

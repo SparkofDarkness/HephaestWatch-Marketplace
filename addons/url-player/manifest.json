@@ -2,7 +2,7 @@
   "type": "addon",
   "id": "url-player",
   "name": "URL Player (Dev)",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Dev-only addon — paste any video URL (http/hls) into the config and it appears as a playable catalog entry. Use this to test the StreamAdapter without a real torrent.",
   "author": "HephaestWatch Dev",
   "provides": ["catalog", "streams"],
