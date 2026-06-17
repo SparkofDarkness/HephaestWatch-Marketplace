@@ -231,12 +231,59 @@ function WatchHistoryButton() {
 }
 
 // ---------------------------------------------------------------------------
+// Home section component
+// ---------------------------------------------------------------------------
+
+function WatchHistorySection() {
+  const [entries, setEntries] = useState([]);
+
+  function load() {
+    lib.getWatched?.().then(items => {
+      const sorted = (items ?? []).slice().sort((a, b) => {
+        return new Date(b.markedAt ?? 0) - new Date(a.markedAt ?? 0);
+      });
+      setEntries(sorted);
+    }).catch(() => {});
+  }
+
+  useEffect(() => {
+    load();
+    const unsub = lib.subscribeToLibrary?.(load);
+    return () => unsub?.();
+  }, []);
+
+  if (entries.length === 0) return null;
+
+  return h('section', { className: 'catalog-row' },
+    h('h2', { className: 'catalog-row__title' }, '✓ Watch History'),
+    h('div', { className: 'catalog-row__scroller' },
+      entries.map(item =>
+        h('div', { key: item.id, className: 'poster-card-wrap' },
+          h('div', { className: 'poster-card' },
+            item.poster
+              ? h('img', { className: 'poster-card__img', src: item.poster, loading: 'lazy', alt: item.title })
+              : h('div', { className: 'poster-card__placeholder' }, h('span', null, item.title))
+          ),
+          h('div', { className: 'poster-card__info' },
+            h('span', { className: 'poster-card__title' }, item.title),
+            item.year && h('div', { className: 'poster-card__sub' },
+              h('span', { className: 'poster-card__year' }, item.year)
+            )
+          )
+        )
+      )
+    )
+  );
+}
+
+// ---------------------------------------------------------------------------
 // Plugin entry point
 // ---------------------------------------------------------------------------
 
 export function init(ctx) {
   injectSharedCSS();
   ctx.ui.register('toolbar', WatchHistoryButton);
+  ctx.ui.register('home-section', WatchHistorySection, { defaultGridSize: { cols: 4, rows: 2 } });
 }
 
 export function teardown() {}

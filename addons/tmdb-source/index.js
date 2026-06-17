@@ -4,6 +4,24 @@
 const TMDB_BASE = 'https://api.themoviedb.org/3';
 const IMG_BASE  = 'https://image.tmdb.org/t/p/w500';
 
+// Genre name → TMDB ID mappings (movie and TV have different IDs for some genres)
+const MOVIE_GENRE_IDS = {
+  'Action': 28, 'Adventure': 12, 'Animation': 16, 'Comedy': 35,
+  'Crime': 80, 'Documentary': 99, 'Drama': 18, 'Family': 10751,
+  'Fantasy': 14, 'History': 36, 'Horror': 27, 'Music': 10402,
+  'Mystery': 9648, 'Romance': 10749, 'Science Fiction': 878, 'Sci-Fi': 878,
+  'Thriller': 53, 'War': 10752, 'Western': 37,
+};
+
+const TV_GENRE_IDS = {
+  'Action': 10759, 'Adventure': 10759, 'Animation': 16, 'Comedy': 35,
+  'Crime': 80, 'Documentary': 99, 'Drama': 18, 'Family': 10751,
+  'Kids': 10762, 'Mystery': 9648, 'Reality': 10764, 'Sci-Fi': 10765,
+  'Science Fiction': 10765, 'Thriller': 53, 'War': 10768, 'Western': 37,
+};
+
+const SUPPORTED_FILTERS = ['genre', 'sort_by', 'year_from', 'year_to', 'rating_min'];
+
 async function tmdbFetch(apiKey, path, params = {}) {
   const key = apiKey?.trim();
   if (!key) {
@@ -52,6 +70,32 @@ function mapSeries(item) {
   };
 }
 
+function buildDiscoverMovieParams(filters, lang, page) {
+  const params = { language: lang, page: String(page ?? 1) };
+  if (filters.genre) {
+    const id = MOVIE_GENRE_IDS[filters.genre];
+    if (id) params['with_genres'] = String(id);
+  }
+  if (filters.sort_by)    params['sort_by']                    = filters.sort_by;
+  if (filters.year_from)  params['primary_release_date.gte']   = `${filters.year_from}-01-01`;
+  if (filters.year_to)    params['primary_release_date.lte']   = `${filters.year_to}-12-31`;
+  if (filters.rating_min) params['vote_average.gte']           = String(filters.rating_min);
+  return params;
+}
+
+function buildDiscoverTvParams(filters, lang, page) {
+  const params = { language: lang, page: String(page ?? 1) };
+  if (filters.genre) {
+    const id = TV_GENRE_IDS[filters.genre];
+    if (id) params['with_genres'] = String(id);
+  }
+  if (filters.sort_by)    params['sort_by']                  = filters.sort_by;
+  if (filters.year_from)  params['first_air_date.gte']       = `${filters.year_from}-01-01`;
+  if (filters.year_to)    params['first_air_date.lte']       = `${filters.year_to}-12-31`;
+  if (filters.rating_min) params['vote_average.gte']         = String(filters.rating_min);
+  return params;
+}
+
 export function init(ctx) {
   const key  = () => ctx.config['apiKey'];
   const lang = () => ctx.config['language'] || 'en-US';
@@ -60,6 +104,8 @@ export function init(ctx) {
     id: 'tmdb:popular-movies',
     name: 'Popular Movies',
     type: 'movie',
+    defaultGridSize: { cols: 4, rows: 2 },
+    supportedFilters: SUPPORTED_FILTERS,
     async fetch(opts = {}) {
       if (opts.search) {
         const d = await tmdbFetch(key(), '/search/movie', { language: lang(), query: opts.search });
@@ -68,14 +114,26 @@ export function init(ctx) {
       const d = await tmdbFetch(key(), '/movie/popular', { language: lang(), page: String(opts.page ?? 1) });
       return d?.results?.map(mapMovie) ?? [];
     },
+    async fetchWithFilters(filters, opts = {}) {
+      const params = buildDiscoverMovieParams(filters, lang(), opts.page);
+      const d = await tmdbFetch(key(), '/discover/movie', params);
+      return d?.results?.map(mapMovie) ?? [];
+    },
   });
 
   ctx.content.registerCatalog({
     id: 'tmdb:top-rated-movies',
     name: 'Top Rated Movies',
     type: 'movie',
+    defaultGridSize: { cols: 4, rows: 2 },
+    supportedFilters: SUPPORTED_FILTERS,
     async fetch(opts = {}) {
       const d = await tmdbFetch(key(), '/movie/top_rated', { language: lang(), page: String(opts.page ?? 1) });
+      return d?.results?.map(mapMovie) ?? [];
+    },
+    async fetchWithFilters(filters, opts = {}) {
+      const params = buildDiscoverMovieParams(filters, lang(), opts.page);
+      const d = await tmdbFetch(key(), '/discover/movie', params);
       return d?.results?.map(mapMovie) ?? [];
     },
   });
@@ -84,6 +142,8 @@ export function init(ctx) {
     id: 'tmdb:popular-series',
     name: 'Popular Series',
     type: 'series',
+    defaultGridSize: { cols: 4, rows: 2 },
+    supportedFilters: SUPPORTED_FILTERS,
     async fetch(opts = {}) {
       if (opts.search) {
         const d = await tmdbFetch(key(), '/search/tv', { language: lang(), query: opts.search });
@@ -92,14 +152,26 @@ export function init(ctx) {
       const d = await tmdbFetch(key(), '/tv/popular', { language: lang(), page: String(opts.page ?? 1) });
       return d?.results?.map(mapSeries) ?? [];
     },
+    async fetchWithFilters(filters, opts = {}) {
+      const params = buildDiscoverTvParams(filters, lang(), opts.page);
+      const d = await tmdbFetch(key(), '/discover/tv', params);
+      return d?.results?.map(mapSeries) ?? [];
+    },
   });
 
   ctx.content.registerCatalog({
     id: 'tmdb:trending-movies',
     name: 'Trending This Week',
     type: 'movie',
+    defaultGridSize: { cols: 4, rows: 2 },
+    supportedFilters: SUPPORTED_FILTERS,
     async fetch() {
       const d = await tmdbFetch(key(), '/trending/movie/week', { language: lang() });
+      return d?.results?.map(mapMovie) ?? [];
+    },
+    async fetchWithFilters(filters, opts = {}) {
+      const params = buildDiscoverMovieParams(filters, lang(), opts.page);
+      const d = await tmdbFetch(key(), '/discover/movie', params);
       return d?.results?.map(mapMovie) ?? [];
     },
   });

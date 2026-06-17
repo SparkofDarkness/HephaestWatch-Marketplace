@@ -27,6 +27,7 @@ export function init(ctx) {
     id: 'url-player:videos',
     name: 'Direct URL Videos',
     type: 'movie',
+    defaultGridSize: { cols: 2, rows: 1 },
     fetch() {
       return Promise.resolve(getConfiguredItems());
     },

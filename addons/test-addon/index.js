@@ -106,12 +106,32 @@ export async function init(ctx) {
     name: 'Test Movies',
     type: 'movie',
     searchable: true,
+    defaultGridSize: { cols: 3, rows: 1 },
+    supportedFilters: ['genre', 'year_from', 'year_to', 'rating_min'],
     async fetch(opts) {
       log('catalog:movies fetch — opts:', opts);
       let items = MOVIES;
       if (opts?.search) {
         const q = opts.search.toLowerCase();
         items = items.filter(m => m.name.toLowerCase().includes(q));
+      }
+      const max = typeof ctx.config.maxResults === 'number' ? ctx.config.maxResults : 10;
+      return items.slice(0, max);
+    },
+    async fetchWithFilters(filters, opts) {
+      log('catalog:movies fetchWithFilters — filters:', filters, 'opts:', opts);
+      let items = MOVIES;
+      if (filters.genre) {
+        items = items.filter(m => m.genres?.includes(filters.genre));
+      }
+      if (filters.year_from) {
+        items = items.filter(m => m.year >= Number(filters.year_from));
+      }
+      if (filters.year_to) {
+        items = items.filter(m => m.year <= Number(filters.year_to));
+      }
+      if (filters.rating_min) {
+        items = items.filter(m => (m.rating ?? 0) >= Number(filters.rating_min));
       }
       const max = typeof ctx.config.maxResults === 'number' ? ctx.config.maxResults : 10;
       return items.slice(0, max);
@@ -124,6 +144,8 @@ export async function init(ctx) {
     name: 'Test Series',
     type: 'series',
     searchable: true,
+    defaultGridSize: { cols: 3, rows: 1 },
+    supportedFilters: ['genre', 'year_from', 'year_to', 'rating_min'],
     async fetch(opts) {
       log('catalog:series fetch — opts:', opts);
       if (opts?.search) {
@@ -131,6 +153,23 @@ export async function init(ctx) {
         return SERIES.filter(s => s.name.toLowerCase().includes(q));
       }
       return SERIES;
+    },
+    async fetchWithFilters(filters, opts) {
+      log('catalog:series fetchWithFilters — filters:', filters, 'opts:', opts);
+      let items = SERIES;
+      if (filters.genre) {
+        items = items.filter(s => s.genres?.includes(filters.genre));
+      }
+      if (filters.year_from) {
+        items = items.filter(s => s.year >= Number(filters.year_from));
+      }
+      if (filters.year_to) {
+        items = items.filter(s => s.year <= Number(filters.year_to));
+      }
+      if (filters.rating_min) {
+        items = items.filter(s => (s.rating ?? 0) >= Number(filters.rating_min));
+      }
+      return items;
     },
   });
 

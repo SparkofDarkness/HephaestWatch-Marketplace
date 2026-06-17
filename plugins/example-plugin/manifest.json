@@ -1,0 +1,12 @@
+{
+  "type": "plugin",
+  "id": "example-plugin",
+  "name": "Example Plugin",
+  "version": "1.0.0",
+  "description": "Developer reference plugin with sidebar widget, command palette integration, and home-section demo.",
+  "author": "SparkofDarkness",
+  "permissions": ["ui", "storage", "commands"],
+  "scripts": {
+    "plugin": "plugin.js"
+  }
+}
