@@ -1,5 +1,6 @@
 {
-  "tags": ["streams", "movies", "series"],
+  "tags": ["streams", "movies", "series", "open-source"],
   "author": "SparkofDarkness",
-  "authorUrl": "https://github.com/SparkofDarkness"
+  "authorUrl": "https://github.com/SparkofDarkness",
+  "recommends": ["tmdb-source", "watchlist", "watch-history"]
 }

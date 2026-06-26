@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1",
-  "updatedAt": "2026-06-26T13:58:39.090Z",
+  "updatedAt": "2026-06-26T14:09:21.099Z",
   "addons": [
     {
       "id": "custom-scraper-template",
@@ -11,7 +11,9 @@
       "repo": "https://github.com/SparkofDarkness/HephaestWatch-Marketplace",
       "tags": [
         "streams",
-        "tools"
+        "tools",
+        "open-source",
+        "experimental"
       ],
       "verified": true,
       "featured": false,
@@ -27,7 +29,8 @@
           "sha256": "927f5311850e2122575705c24550b8730e813eb168b39d325aade5ba619ba8b1",
           "date": "2026-06-26"
         }
-      ]
+      ],
+      "experimental": true
     },
     {
       "id": "test-addon",
@@ -38,7 +41,9 @@
       "repo": "https://github.com/SparkofDarkness/HephaestWatch-Marketplace",
       "tags": [
         "streams",
-        "tools"
+        "tools",
+        "open-source",
+        "experimental"
       ],
       "verified": false,
       "featured": false,
@@ -54,7 +59,8 @@
           "sha256": "518b0f2977708e122334fccd3d4e49caf9dfa54cd7254f94092b3beaee722068",
           "date": "2026-06-26"
         }
-      ]
+      ],
+      "experimental": true
     },
     {
       "id": "tmdb-source",
@@ -67,7 +73,9 @@
         "catalog",
         "metadata",
         "movies",
-        "series"
+        "series",
+        "open-source",
+        "requires-account"
       ],
       "verified": true,
       "featured": true,
@@ -83,6 +91,10 @@
           "sha256": "5f7fa1adb42eabbb77e1825cfe8cea9d20ba44ce85c217dc167714ed3075ec58",
           "date": "2026-06-26"
         }
+      ],
+      "recommends": [
+        "watchlist",
+        "watch-history"
       ]
     },
     {
@@ -95,7 +107,8 @@
       "tags": [
         "streams",
         "movies",
-        "series"
+        "series",
+        "open-source"
       ],
       "verified": true,
       "featured": true,
@@ -111,6 +124,11 @@
           "sha256": "335f63a5facd088c1df94934dcd4ea315aa20ba5300bcf6f2e344f79755802f5",
           "date": "2026-06-26"
         }
+      ],
+      "recommends": [
+        "tmdb-source",
+        "watchlist",
+        "watch-history"
       ]
     },
     {
@@ -122,7 +140,9 @@
       "repo": "https://github.com/SparkofDarkness/HephaestWatch-Marketplace",
       "tags": [
         "streams",
-        "tools"
+        "tools",
+        "open-source",
+        "experimental"
       ],
       "verified": true,
       "featured": false,
@@ -138,7 +158,8 @@
           "sha256": "fb24c431886519005bda073bcdf40f92cc2ef6099fd1f207294ffdce647a7650",
           "date": "2026-06-26"
         }
-      ]
+      ],
+      "experimental": true
     }
   ],
   "plugins": [
@@ -150,7 +171,9 @@
       "authorUrl": "https://github.com/SparkofDarkness",
       "repo": "https://github.com/SparkofDarkness/HephaestWatch-Marketplace",
       "tags": [
-        "tools"
+        "tools",
+        "open-source",
+        "experimental"
       ],
       "verified": true,
       "featured": false,
@@ -166,7 +189,8 @@
           "sha256": "a8d120ce02aea5d4e12c89e63f10ade7c7921ca28e1748722532e40abf0cc834",
           "date": "2026-06-26"
         }
-      ]
+      ],
+      "experimental": true
     },
     {
       "id": "skip-intro",
@@ -177,7 +201,8 @@
       "repo": "https://github.com/SparkofDarkness/HephaestWatch-Marketplace",
       "tags": [
         "player",
-        "ui"
+        "ui",
+        "open-source"
       ],
       "verified": true,
       "featured": true,
@@ -203,7 +228,9 @@
       "authorUrl": "https://github.com/SparkofDarkness",
       "repo": "https://github.com/SparkofDarkness/HephaestWatch-Marketplace",
       "tags": [
-        "tools"
+        "tools",
+        "open-source",
+        "experimental"
       ],
       "verified": false,
       "featured": false,
@@ -219,7 +246,8 @@
           "sha256": "ee9fd9bde003e95ef29198b34296715edbcec0cf807ab6e2c06c963b08ecb3d6",
           "date": "2026-06-26"
         }
-      ]
+      ],
+      "experimental": true
     },
     {
       "id": "watch-history",
@@ -230,7 +258,8 @@
       "repo": "https://github.com/SparkofDarkness/HephaestWatch-Marketplace",
       "tags": [
         "ui",
-        "tools"
+        "tools",
+        "open-source"
       ],
       "verified": true,
       "featured": true,
@@ -246,6 +275,10 @@
           "sha256": "019d3770e47247163230edfc8fb19009a5a4a35ff997f0adca41844d1cf2b1ff",
           "date": "2026-06-26"
         }
+      ],
+      "recommends": [
+        "watchlist",
+        "tmdb-source"
       ]
     },
     {
@@ -257,7 +290,8 @@
       "repo": "https://github.com/SparkofDarkness/HephaestWatch-Marketplace",
       "tags": [
         "ui",
-        "tools"
+        "tools",
+        "open-source"
       ],
       "verified": true,
       "featured": true,
@@ -273,6 +307,10 @@
           "sha256": "b86e0aedfca2501113b98e98c00a1c30d91ae7987ab8b56e39f0048e22d09244",
           "date": "2026-06-26"
         }
+      ],
+      "recommends": [
+        "watch-history",
+        "tmdb-source"
       ]
     }
   ]

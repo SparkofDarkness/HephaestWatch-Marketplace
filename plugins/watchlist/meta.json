@@ -1,5 +1,6 @@
 {
-  "tags": ["ui", "tools"],
+  "tags": ["ui", "tools", "open-source"],
   "author": "SparkofDarkness",
-  "authorUrl": "https://github.com/SparkofDarkness"
+  "authorUrl": "https://github.com/SparkofDarkness",
+  "recommends": ["watch-history", "tmdb-source"]
 }

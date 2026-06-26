@@ -1,5 +1,6 @@
 {
-  "tags": ["catalog", "metadata", "movies", "series"],
+  "tags": ["catalog", "metadata", "movies", "series", "open-source", "requires-account"],
   "author": "SparkofDarkness",
-  "authorUrl": "https://github.com/SparkofDarkness"
+  "authorUrl": "https://github.com/SparkofDarkness",
+  "recommends": ["watchlist", "watch-history"]
 }

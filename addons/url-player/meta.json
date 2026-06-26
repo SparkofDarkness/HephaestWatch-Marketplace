@@ -1,5 +1,6 @@
 {
-  "tags": ["streams", "tools"],
+  "tags": ["streams", "tools", "open-source", "experimental"],
   "author": "SparkofDarkness",
-  "authorUrl": "https://github.com/SparkofDarkness"
+  "authorUrl": "https://github.com/SparkofDarkness",
+  "experimental": true
 }
