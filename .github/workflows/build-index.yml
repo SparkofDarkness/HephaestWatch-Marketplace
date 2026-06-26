@@ -6,6 +6,12 @@ on:
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  # ── Mode toggle ────────────────────────────────────────────────────────────
+  # false → validate only: CI checks that index.json matches the build output.
+  #         Build and commit index.json locally before pushing.
+  # true  → auto-commit: CI rebuilds index.json and pushes it back to main.
+  #         Pull before your next local commit to avoid divergence.
+  AUTO_COMMIT_INDEX: false
 
 jobs:
   build:
@@ -23,8 +29,18 @@ jobs:
         run: node scripts/build-index.mjs
 
       - name: Verify index is up to date
+        if: env.AUTO_COMMIT_INDEX == 'false'
         run: |
           if ! git diff --quiet index.json; then
             echo "❌ index.json is out of date. Run 'node scripts/build-index.mjs' locally and commit the result."
             exit 1
           fi
+
+      - name: Commit and push index.json
+        if: env.AUTO_COMMIT_INDEX == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.json
+          git diff --staged --quiet || git commit -m "chore: rebuild index.json"
+          git push
