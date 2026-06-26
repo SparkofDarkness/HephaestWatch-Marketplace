@@ -22,10 +22,9 @@ jobs:
       - name: Build index
         run: node scripts/build-index.mjs
 
-      - name: Commit index.json
+      - name: Verify index is up to date
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add index.json
-          git diff --staged --quiet || git commit -m "chore: rebuild index.json"
-          git push
+          if ! git diff --quiet index.json; then
+            echo "❌ index.json is out of date. Run 'node scripts/build-index.mjs' locally and commit the result."
+            exit 1
+          fi
