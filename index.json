@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1",
-  "updatedAt": "2026-06-26T18:56:26.949Z",
+  "updatedAt": "2026-06-26T19:25:35.653Z",
   "addons": [
     {
       "id": "custom-scraper-template",
@@ -13,7 +13,7 @@
         "streams",
         "tools",
         "open-source",
-        "experimental"
+        "alpha"
       ],
       "verified": true,
       "featured": false,
@@ -30,7 +30,7 @@
           "date": "2026-06-26"
         }
       ],
-      "experimental": true
+      "releaseStage": "alpha"
     },
     {
       "id": "test-addon",
@@ -43,7 +43,7 @@
         "streams",
         "tools",
         "open-source",
-        "experimental"
+        "alpha"
       ],
       "verified": false,
       "featured": false,
@@ -67,7 +67,7 @@
         "tmdb-source",
         "watchlist"
       ],
-      "experimental": true,
+      "releaseStage": "alpha",
       "testedOnVersion": "1.0.0",
       "minAppVersion": "1.0.0"
     },
@@ -151,7 +151,7 @@
         "streams",
         "tools",
         "open-source",
-        "experimental"
+        "alpha"
       ],
       "verified": true,
       "featured": false,
@@ -168,7 +168,7 @@
           "date": "2026-06-26"
         }
       ],
-      "experimental": true
+      "releaseStage": "alpha"
     }
   ],
   "plugins": [
@@ -182,7 +182,7 @@
       "tags": [
         "tools",
         "open-source",
-        "experimental"
+        "beta"
       ],
       "verified": true,
       "featured": false,
@@ -199,7 +199,7 @@
           "date": "2026-06-26"
         }
       ],
-      "experimental": true
+      "releaseStage": "beta"
     },
     {
       "id": "skip-intro",
@@ -239,7 +239,7 @@
       "tags": [
         "tools",
         "open-source",
-        "experimental"
+        "beta"
       ],
       "verified": false,
       "featured": false,
@@ -263,7 +263,7 @@
         "watchlist",
         "watch-history"
       ],
-      "experimental": true,
+      "releaseStage": "beta",
       "deprecated": true,
       "replacedBy": "example-plugin",
       "testedOnVersion": "1.0.0",

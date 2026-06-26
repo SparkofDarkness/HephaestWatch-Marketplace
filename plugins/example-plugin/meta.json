@@ -1,6 +1,6 @@
 {
-  "tags": ["tools", "open-source", "experimental"],
+  "tags": ["tools", "open-source"],
   "author": "SparkofDarkness",
   "authorUrl": "https://github.com/SparkofDarkness",
-  "experimental": true
+  "releaseStage": "beta"
 }

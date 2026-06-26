@@ -742,7 +742,7 @@ plugins/
   "testedOnVersion": "1.2.0",
   "requires": ["tmdb-source"],
   "recommends": ["watchlist", "watch-history"],
-  "experimental": false,
+  "releaseStage": "beta",
   "deprecated": false,
   "replacedBy": ""
 }
@@ -933,15 +933,19 @@ For community extensions, `"verified": false` is set by the build script and can
 | `testedOnVersion` | `string` | — | App version this was last tested against (informational only) |
 | `requires` | `string[]` | — | IDs of extensions that **must** be installed first |
 | `recommends` | `string[]` | — | IDs of extensions that work well alongside this one |
-| `experimental` | `boolean` | `false` | App shows a warning before installation |
+| `releaseStage` | `"alpha" \| "beta"` | — | App shows a stage warning before installation (`alpha` = red, `beta` = yellow) |
 | `deprecated` | `boolean` | `false` | App shows a deprecation banner |
 | `replacedBy` | `string` | — | ID of the successor extension (requires `deprecated: true`) |
 
 ### Available tags
 
-`catalog` `streams` `metadata` `theme` `ui` `player` `tools` `movies` `series` `anime` `sports` `live` `adult` `open-source` `requires-account` `release-pinned` `pack` `experimental`
+`catalog` `streams` `metadata` `theme` `ui` `player` `tools` `movies` `series` `anime` `sports` `live` `adult` `open-source` `requires-account` `pack`
 
-`release-pinned` is set automatically by the build script for community entries with pinned URLs. Do not set it manually.
+Three tags are set automatically by the build script — do not add them manually:
+
+- `release-pinned` — added when a community entry's `manifestUrl` is pinned to an exact version tag
+- `alpha` — added when `"releaseStage": "alpha"` is set in `meta.json`
+- `beta` — added when `"releaseStage": "beta"` is set in `meta.json`
 
 ---
 

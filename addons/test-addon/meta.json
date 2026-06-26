@@ -1,10 +1,10 @@
 {
-  "tags": ["streams", "tools", "open-source", "experimental"],
+  "tags": ["streams", "tools", "open-source"],
   "author": "SparkofDarkness",
   "authorUrl": "https://github.com/SparkofDarkness",
   "minAppVersion": "1.0.0",
   "testedOnVersion": "1.0.0",
-  "experimental": true,
+  "releaseStage": "alpha",
   "requires": ["test-plugin"],
   "recommends": ["tmdb-source", "watchlist"]
 }

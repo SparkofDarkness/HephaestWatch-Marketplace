@@ -79,6 +79,10 @@ function validateFirstParty(type) {
         errors.push(`${label} meta.json: ungültige tags: ${invalid.join(', ')} (erlaubt: ${VALID_TAGS.join(', ')})`);
     }
 
+    // releaseStage
+    if (meta.releaseStage !== undefined && !['alpha', 'beta'].includes(meta.releaseStage))
+      errors.push(`${label} meta.json: "releaseStage" muss "alpha" oder "beta" sein (erhalten: ${meta.releaseStage})`);
+
     // replacedBy only valid together with deprecated
     if (meta.replacedBy && !meta.deprecated)
       errors.push(`${label} meta.json: "replacedBy" gesetzt, aber "deprecated: true" fehlt`);
@@ -219,6 +223,11 @@ function buildFirstPartyEntries(type, verified, featured) {
       const alreadyTracked = prevVersions.some(v => v.version === manifest.version);
       const versions = alreadyTracked ? prevVersions : [versionEntry, ...prevVersions];
 
+      // Auto-derive release stage tags so developers don't set them manually
+      const tags = [...meta.tags];
+      if (meta.releaseStage === 'alpha' && !tags.includes('alpha')) tags.push('alpha');
+      else if (meta.releaseStage === 'beta' && !tags.includes('beta')) tags.push('beta');
+
       return {
         id:           manifest.id,
         name:         manifest.name,
@@ -226,7 +235,7 @@ function buildFirstPartyEntries(type, verified, featured) {
         author:       meta.author ?? 'SparkofDarkness',
         ...(meta.authorUrl       && { authorUrl:       meta.authorUrl }),
         repo:         'https://github.com/SparkofDarkness/HephaestWatch-Marketplace',
-        tags:         meta.tags,
+        tags,
         verified:     verified.has(manifest.id),
         featured:     featured.has(manifest.id),
         latestVersion: manifest.version,
@@ -237,7 +246,7 @@ function buildFirstPartyEntries(type, verified, featured) {
         // Optional meta fields
         ...(meta.requires        && { requires:        meta.requires }),
         ...(meta.recommends      && { recommends:      meta.recommends }),
-        ...(meta.experimental    && { experimental:    meta.experimental }),
+        ...(meta.releaseStage    && { releaseStage:    meta.releaseStage }),
         ...(meta.deprecated      && { deprecated:      meta.deprecated }),
         ...(meta.replacedBy      && { replacedBy:      meta.replacedBy }),
         ...(meta.testedOnVersion && { testedOnVersion: meta.testedOnVersion }),
@@ -262,9 +271,11 @@ function buildCommunityEntries(entries, verified, featured) {
     const alreadyTracked = prevVersions.some(v => v.version === entry.latestVersion);
     const versions = alreadyTracked ? prevVersions : [versionEntry, ...prevVersions];
 
-    // Auto-add release-pinned tag when URLs are pinned
+    // Auto-derive tags from release stage and URL type
     const tags = [...entry.tags];
     if (isPinnedUrl(entry.manifestUrl) && !tags.includes('release-pinned')) tags.push('release-pinned');
+    if (entry.releaseStage === 'alpha' && !tags.includes('alpha')) tags.push('alpha');
+    else if (entry.releaseStage === 'beta' && !tags.includes('beta')) tags.push('beta');
 
     return {
       id:           entry.id,
@@ -283,7 +294,7 @@ function buildCommunityEntries(entries, verified, featured) {
       versions,
       ...(entry.requires        && { requires:        entry.requires }),
       ...(entry.recommends      && { recommends:      entry.recommends }),
-      ...(entry.experimental    && { experimental:    entry.experimental }),
+      ...(entry.releaseStage    && { releaseStage:    entry.releaseStage }),
       ...(entry.deprecated      && { deprecated:      entry.deprecated }),
       ...(entry.replacedBy      && { replacedBy:      entry.replacedBy }),
       ...(entry.testedOnVersion && { testedOnVersion: entry.testedOnVersion }),

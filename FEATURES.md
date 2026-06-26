@@ -68,40 +68,37 @@
 
 ---
 
-## Haupt-App (HephaestWatch) — noch nicht umgesetzt 🏠
+## Haupt-App (HephaestWatch)
 
-### 🔲 SHA256-Verifikation
-- Nach Download eines Bundles: berechneten Hash gegen `index.json`-Eintrag prüfen
-- Bei Mismatch: Installation abbrechen + Fehlermeldung
+### ✅ SHA256-Verifikation
+- `_downloadAndRegister()` in `marketplace.ts` prüft Hash nach Download
+- Bei Mismatch: Installation abgebrochen + Fehlermeldung
 
-### 🔲 Versionshistorie-UI
-- Im Marketplace-Detail einer Extension: Dropdown mit allen verfügbaren Versionen
-- "Rollback auf Version X" — lädt Bundle-URL aus `versions[x].bundleUrl`
-- Aktuell installierte Version hervorheben
+### ✅ Versionshistorie-UI
+- `ConfigDrawer` zeigt alle `versions[]`-Einträge mit Datum
+- "Install"-Button pro Version für Rollback
+- Aktuell installierte Version hervorgehoben
 
-### 🔲 Dependency-Resolver
-- Vor Installation prüfen: sind alle `requires`-Extensions installiert?
-- Falls nicht: automatisch mitinstallieren (mit Bestätigung)
-- `recommends` als "Vielleicht auch interessant?"-Hinweis anzeigen
+### ✅ Dependency-Resolver
+- `getMissingDependencies()` prüft `requires` vor der Installation
+- `DependencyModal` bei fehlenden Dependencies
+- `recommends` als optionale Auswahl im `InstallConfirmModal`
 
-### 🔲 `experimental`-Warnung
-- Vor Installation einer Extension mit `experimental: true`: Modal mit Warnung
-- "Diese Extension ist experimentell — auf eigene Gefahr installieren"
+### ✅ `experimental`-Warnung
+- `ExperimentalWarningModal` erscheint vor der Installation
+- "BETA"-Badge auf den Browse-Karten
 
-### 🔲 `deprecated`-Banner
-- Im Marketplace und in der installierten Extension-Liste: gelbes Banner
-- Text: "Diese Extension ist veraltet" + optional "Wechsle zu [replacedBy]"
+### ✅ `deprecated`-Banner
+- Deprecation-Banner auf Browse-Karten und im Install-Modal
+- Link zur `replacedBy`-Extension wenn gesetzt
 
-### 🔲 `testedOnVersion`-Hinweis
-- Extension wurde auf Version X getestet, User läuft Version Y
-- Y > X: ⚠️ "Getestet auf X — sollte funktionieren, aber ungeprüft"
-- Y < X: ⚠️ "Für eine neuere App-Version entwickelt — eventuell inkompatibel"
+### ✅ `testedOnVersion`-Hinweis
+- Versionskompatibilitäts-Hinweis auf Browse-Karten und im Install-Modal
 - Kein Block — nur Info
 
-### 🔲 Custom Registry URL
-- In App-Einstellungen: User kann eigene Registry-URL eintragen
-- App fetched alle Registry-Quellen und zeigt Extensions zusammen an
-- Anwendungsfälle: private Firmen-Extensions, Community-Kollektionen, lokales Testing
+### ✅ Custom Registry URL
+- `appSettings.get('customRegistryUrls')` in `fetchIndex()`
+- Mehrere Registries werden gemergt und zusammen angezeigt
 
 ---
 
@@ -118,7 +115,7 @@
   "testedOnVersion": "1.2.0",
   "requires": ["tmdb-source"],
   "recommends": ["watchlist", "watch-history"],
-  "experimental": false,
+  "releaseStage": "beta",
   "deprecated": false,
   "replacedBy": "better-addon-id"
 }
@@ -140,7 +137,7 @@
   "bundleUrl":   "https://cdn.jsdelivr.net/gh/someuser/hw-my-addon@1.0.0/index.js",
   "sha256": "optional — SHA256 des Bundles",
   "testedOnVersion": "1.0.0",
-  "experimental": false,
+  "releaseStage": "beta",
   "requires": [],
   "recommends": []
 }
