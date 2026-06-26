@@ -2,5 +2,11 @@
   "tags": ["tools", "open-source", "experimental"],
   "author": "SparkofDarkness",
   "authorUrl": "https://github.com/SparkofDarkness",
-  "experimental": true
+  "minAppVersion": "1.0.0",
+  "testedOnVersion": "1.0.0",
+  "experimental": true,
+  "deprecated": true,
+  "replacedBy": "example-plugin",
+  "requires": ["test-addon"],
+  "recommends": ["watchlist", "watch-history"]
 }
