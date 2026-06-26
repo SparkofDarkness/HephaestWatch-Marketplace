@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1",
-  "updatedAt": "2026-06-26T19:31:12.828Z",
+  "updatedAt": "2026-06-26T19:38:26.615Z",
   "addons": [
     {
       "id": "custom-scraper-template",
@@ -68,6 +68,7 @@
         "watchlist"
       ],
       "releaseStage": "alpha",
+      "devOnly": true,
       "testedOnVersion": "1.0.0",
       "minAppVersion": "1.0.0"
     },
@@ -264,6 +265,7 @@
         "watch-history"
       ],
       "releaseStage": "beta",
+      "devOnly": true,
       "deprecated": true,
       "replacedBy": "example-plugin",
       "testedOnVersion": "1.0.0",

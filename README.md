@@ -934,6 +934,7 @@ For community extensions, `"verified": false` is set by the build script and can
 | `requires` | `string[]` | — | IDs of extensions that **must** be installed first |
 | `recommends` | `string[]` | — | IDs of extensions that work well alongside this one |
 | `releaseStage` | `"alpha" \| "beta"` | — | App shows a stage warning before installation (`alpha` = red, `beta` = yellow) |
+| `devOnly` | `boolean` | `false` | Hidden in production — only visible when the app runs in dev mode |
 | `deprecated` | `boolean` | `false` | App shows a deprecation banner |
 | `replacedBy` | `string` | — | ID of the successor extension (requires `deprecated: true`) |
 

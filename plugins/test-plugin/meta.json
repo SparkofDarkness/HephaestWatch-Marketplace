@@ -5,6 +5,7 @@
   "minAppVersion": "1.0.0",
   "testedOnVersion": "1.0.0",
   "releaseStage": "beta",
+  "devOnly": true,
   "deprecated": true,
   "replacedBy": "example-plugin",
   "requires": ["test-addon"],

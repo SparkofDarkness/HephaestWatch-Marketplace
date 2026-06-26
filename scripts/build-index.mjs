@@ -83,6 +83,10 @@ function validateFirstParty(type) {
     if (meta.releaseStage !== undefined && !['alpha', 'beta'].includes(meta.releaseStage))
       errors.push(`${label} meta.json: "releaseStage" muss "alpha" oder "beta" sein (erhalten: ${meta.releaseStage})`);
 
+    // devOnly must be boolean
+    if (meta.devOnly !== undefined && typeof meta.devOnly !== 'boolean')
+      errors.push(`${label} meta.json: "devOnly" muss ein Boolean sein`);
+
     // replacedBy only valid together with deprecated
     if (meta.replacedBy && !meta.deprecated)
       errors.push(`${label} meta.json: "replacedBy" gesetzt, aber "deprecated: true" fehlt`);
@@ -247,6 +251,7 @@ function buildFirstPartyEntries(type, verified, featured) {
         ...(meta.requires        && { requires:        meta.requires }),
         ...(meta.recommends      && { recommends:      meta.recommends }),
         ...(meta.releaseStage    && { releaseStage:    meta.releaseStage }),
+        ...(meta.devOnly         && { devOnly:         true }),
         ...(meta.deprecated      && { deprecated:      meta.deprecated }),
         ...(meta.replacedBy      && { replacedBy:      meta.replacedBy }),
         ...(meta.testedOnVersion && { testedOnVersion: meta.testedOnVersion }),
@@ -295,6 +300,7 @@ function buildCommunityEntries(entries, verified, featured) {
       ...(entry.requires        && { requires:        entry.requires }),
       ...(entry.recommends      && { recommends:      entry.recommends }),
       ...(entry.releaseStage    && { releaseStage:    entry.releaseStage }),
+      ...(entry.devOnly         && { devOnly:         true }),
       ...(entry.deprecated      && { deprecated:      entry.deprecated }),
       ...(entry.replacedBy      && { replacedBy:      entry.replacedBy }),
       ...(entry.testedOnVersion && { testedOnVersion: entry.testedOnVersion }),

@@ -5,6 +5,7 @@
   "minAppVersion": "1.0.0",
   "testedOnVersion": "1.0.0",
   "releaseStage": "alpha",
+  "devOnly": true,
   "requires": ["test-plugin"],
   "recommends": ["tmdb-source", "watchlist"]
 }
